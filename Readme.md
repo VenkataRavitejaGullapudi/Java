@@ -36,9 +36,11 @@ float num = 23.99F
 4. default
 
 - Default: The data members, class or methods which are not declared using any access modifiers i.e. having _*default*_ access modifier are accessible only within the same package.
-- Private data members are accessible only within the class
+- Private: data members are accessible only within the class
 - public: Everywhere it can be accessed
-- 
+- protected: data members or methods are accessible only within the current class and its child classes only (only parent class and child classes can access the protected variables).
+    - If no child classes it can be accessible only within the class.
+    
 
 ### Classes
 It is collection of data members and member functions.
@@ -91,11 +93,11 @@ The functions which are in the classes or object oriented program can be called 
 
 - These methods can also have access specifiers
 
-### static variables
+### Static variables
 - Whenever we made a variable or function as static it can be accessed or called without creation of object.
 - To use a method or variable in the class which is defined as static, we can directly call it by using class name only.
 - If we created a variable with static, only one copy of that variable is available for the all objects of that class.
-- As these are ade for the class not for the objects.
+- As these are made for the class not for the objects.
 - Global and static variables are very similar . The only difference being static variables may be public or private . A public static variable is a global variable in java .
  
 Eg:
@@ -314,3 +316,231 @@ public class Employee {
 
 
 ```
+
+### new
+It is a memory allocation operator which assigns a memory location to an object.
+
+### Constructors
+- A method in a class which has same name as class name is called as constructors in `Java`.
+- Constructors are methods in class which allocate memory or create object and intialize the objects to the class.
+- These will not have return type
+- If constructor is private we cannot create object on other class
+- If anything to be executed at the time of Object creation then place those things in the constructor
+
+
+#### Default Constructors
+- This type will not contain any arguments
+- This will be called by default, and it will be present default when created class.
+- Whenever you are calling a constructor it means creating an object
+
+### Data hiding
+- The data should not be changed from outside the class.
+- By default, the members of class are default.
+- So always make all the properties private.
+- Hiding the data(properties) from outside accessing is Data Hiding.
+
+### Data Abstraction
+- Displaying only essential information and hiding the details or data is called Data Abstraction.
+
+
+### Data Binding
+- When we hide variable, but we need to access or change those we can use getter and setter methods.
+- Then we can see that we binded the variable age with the getter and setter methods.
+- The concept of binding the variable with the functions is called Data binding.
+
+### Encapsulation
+- The process of binding the data members and member functions is called Encapsulation.
+- Encapsulation in Java is a mechanism of wrapping the data (variables) and code acting on the data (methods) together as a single unit. 
+- In encapsulation, the variables of a class will be hidden from other classes, and can be accessed only through the methods of their current class.
+### this pointer or keyword
+- this keyword will always represent the current class context or current class properties.
+
+### Function or Method Overloading
+- The process of creating method or function with same name but different parameters or return type is called Function overloading.
+ 
+- The linking of a function with an object during compile time is called early binding. 
+- It is also called static binding.
+
+Eg:
+```
+public class Calculation {
+    public void add(int num1, int num2){
+        int res = num1+num2;
+        System.out.println(res);
+    }
+
+    public void add(int num1, int num2, int num3){
+        int res = num1+num2+num3;
+        System.out.println(res);
+    }
+}
+
+calculation.add(1,2); // calls first add method with 2 params
+calculation.add(1,2,3); //calls second add method with 3 params
+```
+
+### Polymorphism
+- Ability to exist in many forms is called polymorphism.
+- Overloading is the concept of the polymorphism.
+- Polymorphism is the ability of an object to take on many forms.
+- The most common use of polymorphism in OOP occurs when a parent class reference is used to refer to a child class object. 
+- Any Java object that can pass more than one IS-A test is considered to be polymorphic.
+
+##### Compile time Polymorphism
+- Whenever an object is bound with their functionality at the compile-time, it is compile-time polymorphism
+- Compile time polymorphism is achieved by function overloading or operator overloading.
+
+##### Run time Polymorphism
+- Whenever an object is bound with the functionality at run time, it is runtime polymorphism.
+- Run time polymorphism is achieved by Function Overriding and virtual function concept.
+
+### Inheritance
+- The process of extending the features of one class by another class is called Inheritance.
+- Make Reusability
+- 'extends' keyword is used to inherit a class
+```
+class OneClass
+{
+    properties,
+    methods
+}
+
+class OtherClass extends OneClass
+{
+    another properties,
+    methods
+}
+
+Now OtherClass can use all the features of the Oneclass
+```
+    
+**Everything in the OOP is maximum related for security and reusability**
+
+### Function or Method overriding
+- If the method in the parent class and derived class is exactly the same then parent class method is overridden by child class method
+- This process is called Method Overriding
+
+### Interfaces
+- Its almost like a class but all the properties in the interface are by default final. 
+- And every method in the interface should always be an abstract method
+    ###### Abstract Method
+        - The methods that does not have implemetation is called Abstract method.
+Eg:
+```
+    interface Demo{
+        properties are final by default,
+        // Should be abstract
+        methods(){
+        }
+     }
+```
+- Interfaces can't be instantiated i.e., we cannot create objects for interface.
+- Interfaces are inherited by the classes and the implementation of all the methods of the interfaces is responsibility of class that implements.
+- All the methods in the interface should be overridden atleast with some empty method.
+- 'implements' keyword is used to inherit the interface. 
+
+- It supports Abstraction.
+```
+Shape c = new Circle();
+c.area();
+// Here c is of type Shape 
+// but it has the memory or it references to Circle Object
+// As c is a type of Shape and no one can see any area implementation
+// in shape but actually it is refering the circle class
+// This is the concept of Abstraction in which 
+// Only essential features are shown by hiding background details or implementation
+
+```
+
+### final keyword
+- static means there is only one copy of the variable in memory shared by all instances of the class. 
+- The final keyword just means the value can't be changed. 
+- Without final , any object can change the value of the variable.Dec 8, 2012
+- final variable -> To create constant variables(value cant be changed).
+- final methods -> To prevent Method Overriding
+- final classes -> To prevent Inheritance
+
+### Enhanced for loop(foreach loop)
+- Directly iterate over elements.
+- here var is element in collection/array
+- It means it get elements one by one from collection.
+```
+    for(type var: array/collection){
+    }
+```
+### Iterators
+- Iterator present in the java.util.
+- Iterator basically stores the iteration of the collection.
+- Especially used for high end collections
+- Using Iterators
+```
+Iterator iterator = names.iterator();
+// hasNext() method returns true if there is a next element
+// else false
+while(iterator.hasNext()){
+    // If has next element then get the element.
+    System.out.println(iterator.next());
+}
+```
+
+
+
+## Collections
+- Group of data is a collection.
+- Array is also a collection, but it is not dynamic.
+
+### ArrayList
+- Present in java.util package
+Syntax to create:
+```
+ArrayList<String> names = new ArrayList();
+*If we not mentioned as type <String> it can store anything*
+```
+- Use arraylist object(names).add() method to add element to array.
+- In add() method, we can directly specify the value to add sequentially.
+- Or you can also specify index,value arguments to insert value at given index.
+
+- To remove element
+` names.remove("Thor"); // by value
+    names. remove(0); // by index
+`
+- To check exists or not 
+```
+ArrayListobj.contains(val); //returns exists or not
+```
+
+### Hash Tables
+- It stores the data in the form of key value pairs.
+- Creating HashTable
+```
+//Creating Hashtable with Key is of String type and value is of string type.
+Hashtable<String,String> hashtable = new Hashtable();
+```
+- In hashtable, each key-value pair is stored as an Map entry.
+- That means Map.Entry<Key,Value> in the hastable.entrySet().
+- Using HashTables
+Eg:
+```
+    // Hash Table
+    //Creating Hashtable with Key is of String type and value is of string type.
+    Hashtable<String,String> hashtable = new Hashtable();
+    hashtable.put("Name1","Ravi");
+    hashtable.put("Name2","Iron Man");
+    hashtable.put("Name3","Thor");
+    System.out.println("---Storing in Hash table--");
+    // To get hash value
+    System.out.println(hashtable.get("Name1"));
+    // To remove a element
+
+
+    for (Map.Entry entry: hashtable.entrySet()) {
+        System.out.println(entry.getKey()+" "+entry.getValue());
+    }
+    hashtable.remove("Name3");
+
+    for (Map.Entry entry: hashtable.entrySet()) {
+        System.out.println(entry.getKey()+" "+entry.getValue());
+    }
+```
+
+
